@@ -1,12 +1,11 @@
-import {Box, Button, IconButton, useColorMode, useDisclosure} from '@chakra-ui/react'
+import {Box, IconButton, useColorMode, useDisclosure} from '@chakra-ui/react'
 import {Logo} from '@/components/Logo'
 import {Navigation} from '@/components/Navigation'
 import {navLinks} from '@/config/navLinks'
 import {authLinks} from '@/config/authLinks'
-import {HamburgerIcon} from '@chakra-ui/icons'
+import {HamburgerIcon, MoonIcon, SunIcon} from '@chakra-ui/icons'
 import {MobileMenu} from '@/components/MobileMenu'
 import {signOut, useSession} from 'next-auth/react'
-import {SunIcon, MoonIcon} from '@chakra-ui/icons'
 
 export const Header = () => {
     const { colorMode, toggleColorMode } = useColorMode()
@@ -27,7 +26,7 @@ export const Header = () => {
             top={0}
             zIndex={10}
         >
-            <Logo imgUrl={session?.data?.user?.image} status={session.status}/>
+            <Logo imgUrl={session?.data?.user?.image} status={session.status} name={session?.data?.user?.name}/>
             <Navigation links={navLinks} session={session?.data}/>
 
             <IconButton
